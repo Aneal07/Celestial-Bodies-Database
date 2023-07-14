@@ -1,0 +1,28 @@
+CREATE DATABASE  UNIVERSE;
+\c universe;
+CREATE TABLE galaxy(galaxy_id SERIAL PRIMARY KEY NOT NULL, speed INT, description TEXT);
+\d galaxy
+CREATE TABLE star(star_id  SERIAL PRIMARY KEY  NOT NULL, radius INT NOT NULL, color VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL,GALAXY_ID INT, CONSTRAINT fk_galaxy FOREIGN KEY(galaxy_id) REFERENCES galaxy(galaxy_id));
+\d star
+ALTER TABLE galaxy ADD COLUMN name VARCHAR(255) NOT NULL;
+\D GALAXY
+\D GALAXY
+\d galaxy
+CREATE TABLE planet(planet_id SERIAL PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL, amount_of_people NUMERIC, time_travel boolean DEFAULT(false) NOT NULL, star_id INT NOT NULL, CONSTRAINT fk_star FOREIGN KEY(star_id) REFERENCES star(star_id));
+\d planet
+CREATE TABLE moon(moon_id SERIAL PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL, name_code VARCHAR(255) UNIQUE, has_water boolean NOT NULL, planet_id INT NOT NULL, CONSTRAINT fk_planet FOREIGN KEY(planet_id) REFERENCES planet(planet_id);
+CREATE TABLE planet(planet_id SERIAL PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL, amount_of_people NUMERIC, time_travel boolean DEFAULT(false) NOT NULL, star_id INT NOT NULL, CONSTRAINT fk_planet FOREIGN KEY(planet_id) REFERENCES planet(planet_id));
+\d moon
+\d planet
+CREATE TABLE moon(moon_id SERIAL PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL, name_code VARCHAR(255) UNIQUE, has_water boolean NOT NULL, planet_id INT NOT NULL, CONSTRAINT fk_planet FOREIGN KEY (planet_id) REFERENCES planet(planet_id));
+\d moon
+\d universe
+\c universe
+psql --username=freecodecamp --dbname=postgres
+CREATE TABLE moon(moon_id SERIAL PRIMARY KEY NOT NULL, name VARCHAR(255) NOT NULL, name_code VARCHAR(255) UNIQUE, has_water boolean NOT NULL, planet_id INT NOT NULL, CONSTRAINT fk_planet FOREIGN KEY (planet_id) REFERENCES planet(planet_id));
+\d moon
+\d star
+\d galaxy
+\d planet
+\d moon
+\s postgres
